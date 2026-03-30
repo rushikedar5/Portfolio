@@ -1,23 +1,23 @@
 [
   {
     "id": "1",
-    "title": "AI Chatbot CLI",
-    "description": "A terminal-based chatbot built with Node.js and Groq's LLaMA 3 model.",
+    "title": "AI-Assistant",
+    "description": "A AI-Assistant built with Node.js and Groq's LLaMA 3 model.",
     "tags": ["TypeScript", "Groq", "Node.js"],
-    "githubUrl": "https://github.com/yourusername/ai-chatbot-cli"
+    "githubUrl": "https://github.com/rushikedar5/AI-Chatbot-CLI"
   },
   {
     "id": "2",
     "title": "Document Q&A Bot",
     "description": "RAG-based document assistant using ChromaDB and local embeddings.",
     "tags": ["TypeScript", "ChromaDB", "RAG"],
-    "githubUrl": "https://github.com/yourusername/doc-qa-bot"
+    "githubUrl": "https://github.com/rushikedar5/Document-Q-A-Bot"
   },
   {
     "id": "3",
     "title": "AI Resume Analyzer",
     "description": "Extracts and analyzes resume data from PDFs using Express and pdf-parse.",
     "tags": ["TypeScript", "Express", "Multer"],
-    "githubUrl": "https://github.com/yourusername/resume-analyzer"
+    "githubUrl": "https://github.com/rushikedar5/AI-Resume-Analyzer"
   }
 ]

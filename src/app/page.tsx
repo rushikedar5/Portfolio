@@ -1,17 +1,20 @@
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import Link from "next/link";
+import SocialLinks from "@/components/SocialLinks";
 
 const skills = [
   "TypeScript",
+  "Next.js",
   "Node.js",
   "Express",
+  "SpringBoot",
   "PostgreSQL",
   "Prisma",
   "Groq",
   "RAG",
   "Docker",
-  "SpringBoot"
+  
 ];
 
 export default function Home() {
@@ -34,10 +37,13 @@ export default function Home() {
           <Link href="/projects">
             <Button>View Projects</Button>
           </Link>
-          <Link href="/contact">
-            <Button variant="outline">Get in Touch</Button>
+          <Link href="/resume.pdf" target="_blank" download>
+            <Button size="lg" variant="outline">
+              Resume
+            </Button>
           </Link>
         </div>
+        <SocialLinks className="mt-2" />
       </section>
 
       {/* Skill */}
