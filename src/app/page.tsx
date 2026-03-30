@@ -23,7 +23,7 @@ export default function Home() {
           <p className="text-muted-foreground text-sm font-medium tracking-widest uppercase">
             Hello, I'm
           </p>
-          <h1 className="text-5xl font-bold tracking-tight">Hrushikesh Kedar</h1>
+          <h2 className="text-5xl font-bold tracking-tight">Hrushikesh Kedar</h2>
           <p className="text-xl text-muted-foreground max-w-xl leading-relaxed">
             TypeScript backend developer building AI-powered applications — from
             RAG pipelines to autonomous agents.
@@ -31,12 +31,12 @@ export default function Home() {
         </div>
 
         <div className="flex items-center gap-4">
-          <Button asChild>
-            <Link href="/projects">View Projects</Link>
-          </Button>
-          <Button variant="outline" asChild>
-            <Link href="/contact">Get in Touch</Link>
-          </Button>
+          <Link href="/projects">
+            <Button>View Projects</Button>
+          </Link>
+          <Link href="/contact">
+            <Button variant="outline">Get in Touch</Button>
+          </Link>
         </div>
       </section>
 
