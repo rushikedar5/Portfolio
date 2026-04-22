@@ -3,7 +3,7 @@
 import ProjectCard from "@/components/ProjectCard";
 import { Project } from "@/types";
 import projects from "@/data/project.json";
-import { motion } from "framer-motion";
+import { motion, Variants } from "framer-motion"; // 1. Added Variants import
 import { FolderGit2, Terminal } from "lucide-react";
 
 /* NOTE: Move this metadata to app/projects/layout.tsx 
@@ -12,7 +12,8 @@ import { FolderGit2, Terminal } from "lucide-react";
   };
 */
 
-const containerVariants = {
+// 2. Added ': Variants' here
+const containerVariants: Variants = {
   hidden: { opacity: 0 },
   visible: {
     opacity: 1,
@@ -20,7 +21,8 @@ const containerVariants = {
   },
 };
 
-const itemVariants = {
+// 3. Added ': Variants' here
+const itemVariants: Variants = {
   hidden: { opacity: 0, y: 20 },
   visible: {
     opacity: 1,
