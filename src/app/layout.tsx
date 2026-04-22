@@ -35,11 +35,23 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
+      className={`${geistSans.variable} ${geistMono.variable} dark`}
     >
-      <NavBar/>
-      <body className="min-h-full flex flex-col">{children}</body>
-      <Footer/>
+      {/* 1. Body gets the dark theme background and min-h-screen */}
+      <body className="min-h-screen flex flex-col bg-slate-950 text-slate-300 antialiased font-sans">
+        
+        {/* 2. NavBar MUST be inside the body */}
+        <NavBar />
+        
+        {/* 3. Main wrapper uses flex-grow to push the footer down */}
+        <main className="flex-grow relative z-10 w-full">
+          {children}
+        </main>
+        
+        {/* 4. Footer MUST be inside the body */}
+        <Footer />
+        
+      </body>
     </html>
   );
 }
