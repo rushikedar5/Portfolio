@@ -35,10 +35,10 @@ export default function SocialLinks({ className }: { className?: string }) {
               className="group relative flex items-center justify-center w-10 h-10 border border-cyan-900/60 bg-slate-900/40 backdrop-blur-md transition-all hover:border-cyan-400/80 hover:bg-cyan-950/60 hover:shadow-[0_0_12px_rgba(6,182,212,0.4)]"
             >
               {/* Decorative Tech Corners (Visible on Hover) */}
-              <div className="absolute top-0 left-0 w-[3px] h-[3px] border-t border-l border-cyan-400 opacity-0 group-hover:opacity-100 transition-opacity" />
-              <div className="absolute top-0 right-0 w-[3px] h-[3px] border-t border-r border-cyan-400 opacity-0 group-hover:opacity-100 transition-opacity" />
-              <div className="absolute bottom-0 left-0 w-[3px] h-[3px] border-b border-l border-cyan-400 opacity-0 group-hover:opacity-100 transition-opacity" />
-              <div className="absolute bottom-0 right-0 w-[3px] h-[3px] border-b border-r border-cyan-400 opacity-0 group-hover:opacity-100 transition-opacity" />
+              <div className="absolute top-0 left-0 w-0.75 h-0.75 border-t border-l border-cyan-400 opacity-0 group-hover:opacity-100 transition-opacity" />
+              <div className="absolute top-0 right-0 w-0.75 h-0.75 border-t border-r border-cyan-400 opacity-0 group-hover:opacity-100 transition-opacity" />
+              <div className="absolute bottom-0 left-0 w-0.75 h-0.75 border-b border-l border-cyan-400 opacity-0 group-hover:opacity-100 transition-opacity" />
+              <div className="absolute bottom-0 right-0 w-0.75 h-0.75 border-b border-r border-cyan-400 opacity-0 group-hover:opacity-100 transition-opacity" />
               
               {/* Icon with glowing transition */}
               <Icon 

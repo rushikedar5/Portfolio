@@ -44,7 +44,7 @@ export default function RootLayout({
         <NavBar />
         
         {/* 3. Main wrapper uses flex-grow to push the footer down */}
-        <main className="flex-grow relative z-10 w-full">
+        <main className="grow relative z-10 w-full">
           {children}
         </main>
         

@@ -7,10 +7,10 @@ export default function Footer() {
   return (
     <footer className="relative border-t border-cyan-900/50 mt-24 bg-slate-950 overflow-hidden">
       {/* Glowing top edge */}
-      <div className="absolute top-0 left-0 w-full h-[1px] bg-gradient-to-r from-transparent via-cyan-500/40 to-transparent" />
+      <div className="absolute top-0 left-0 w-full h-px bg-linear-to-r from-transparent via-cyan-500/40 to-transparent" />
       
       {/* Subtle blueprint grid for the footer background */}
-      <div className="absolute inset-0 z-0 bg-[linear-gradient(to_right,#06b6d405_1px,transparent_1px),linear-gradient(to_bottom,#06b6d405_1px,transparent_1px)] bg-[size:16px_16px] pointer-events-none" />
+      <div className="absolute inset-0 z-0 bg-[linear-gradient(to_right,#06b6d405_1px,transparent_1px),linear-gradient(to_bottom,#06b6d405_1px,transparent_1px)] bg-size-[16px_16px] pointer-events-none" />
 
       <div className="relative z-10 max-w-4xl mx-auto px-6 py-8 flex flex-col sm:flex-row items-center justify-between gap-6">
         
@@ -35,7 +35,7 @@ export default function Footer() {
           </div>
           
           {/* Decorative vertical divider */}
-          <div className="hidden sm:block w-[1px] h-8 bg-cyan-900/50" />
+          <div className="hidden sm:block w-px h-8 bg-cyan-900/50" />
 
           <Link href="/resume.pdf" target="_blank" download>
             <Button 

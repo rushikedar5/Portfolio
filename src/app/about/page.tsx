@@ -1,6 +1,6 @@
 "use client";
 
-import { motion } from "framer-motion";
+import { motion, Variants } from "framer-motion"; // Added 'Variants' import
 import { User, Activity, Terminal, Code2, MapPin, GraduationCap } from "lucide-react";
 
 /* NOTE: Move this metadata to app/about/layout.tsx 
@@ -32,7 +32,9 @@ const currently = [
 ];
 
 // --- Animation Variants ---
-const containerVariants = {
+
+// 1. Added ': Variants' here
+const containerVariants: Variants = {
   hidden: { opacity: 0 },
   visible: {
     opacity: 1,
@@ -40,7 +42,8 @@ const containerVariants = {
   },
 };
 
-const itemVariants = {
+// 2. Added ': Variants' here
+const itemVariants: Variants = {
   hidden: { opacity: 0, y: 20 },
   visible: {
     opacity: 1,
@@ -83,8 +86,8 @@ export default function AboutPage() {
       </motion.section>
 
       {/* Blueprint Separator */}
-      <motion.div variants={itemVariants} className="relative w-full h-[1px] bg-cyan-900/50 my-2">
-        <div className="absolute left-0 top-1/2 -translate-y-1/2 w-16 h-[1px] bg-cyan-400 shadow-[0_0_10px_rgba(6,182,212,0.8)]" />
+      <motion.div variants={itemVariants} className="relative w-full h-px bg-cyan-900/50 my-2">
+        <div className="absolute left-0 top-1/2 -translate-y-1/2 w-16 h-px bg-cyan-400 shadow-[0_0_10px_rgba(6,182,212,0.8)]" />
       </motion.div>
 
       {/* Experience Areas */}
@@ -102,7 +105,7 @@ export default function AboutPage() {
               className="flex flex-col gap-3 p-5 border border-cyan-900/40 bg-slate-900/40 backdrop-blur-sm transition-all group relative overflow-hidden"
             >
               {/* Hover scanning effect */}
-              <div className="absolute top-0 left-0 w-full h-[1px] bg-cyan-400/50 -translate-y-full group-hover:animate-[scan_2s_ease-in-out_infinite] opacity-0 group-hover:opacity-100 pointer-events-none" />
+              <div className="absolute top-0 left-0 w-full h-px bg-cyan-400/50 -translate-y-full group-hover:animate-[scan_2s_ease-in-out_infinite] opacity-0 group-hover:opacity-100 pointer-events-none" />
               
               <div className="text-cyan-600 font-mono text-xs opacity-50">[{String(index + 1).padStart(2, '0')}]</div>
               <p className="font-bold text-white font-mono">{item.area}</p>
@@ -115,8 +118,8 @@ export default function AboutPage() {
       </motion.section>
 
       {/* Blueprint Separator */}
-      <motion.div variants={itemVariants} className="relative w-full h-[1px] bg-cyan-900/50 my-2">
-         <div className="absolute right-0 top-1/2 -translate-y-1/2 w-16 h-[1px] bg-cyan-400 shadow-[0_0_10px_rgba(6,182,212,0.8)]" />
+      <motion.div variants={itemVariants} className="relative w-full h-px bg-cyan-900/50 my-2">
+         <div className="absolute right-0 top-1/2 -translate-y-1/2 w-16 h-px bg-cyan-400 shadow-[0_0_10px_rgba(6,182,212,0.8)]" />
       </motion.div>
 
       {/* Currently Building */}

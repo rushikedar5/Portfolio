@@ -31,11 +31,11 @@ export default function Loading() {
             <div className="absolute bottom-0 right-0 w-2 h-2 border-b border-r border-cyan-800/50" />
 
             {/* Scanning line effect for the skeletons */}
-            <div className="absolute top-0 left-0 w-full h-[1px] bg-cyan-500/20 shadow-[0_0_8px_rgba(6,182,212,0.4)] animate-[scan_2s_ease-in-out_infinite]" />
+            <div className="absolute top-0 left-0 w-full h-px bg-cyan-500/20 shadow-[0_0_8px_rgba(6,182,212,0.4)] animate-[scan_2s_ease-in-out_infinite]" />
 
             {/* Simulated Card Content */}
             <div className="h-6 w-1/2 bg-slate-800/40 border border-cyan-900/30" />
-            <div className="flex-grow space-y-3 mt-4">
+            <div className="grow space-y-3 mt-4">
               <div className="h-2 w-full bg-slate-800/30" />
               <div className="h-2 w-5/6 bg-slate-800/30" />
               <div className="h-2 w-4/6 bg-slate-800/30" />

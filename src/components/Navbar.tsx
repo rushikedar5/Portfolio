@@ -16,9 +16,9 @@ export default function NavBar() {
   const pathname = usePathname();
 
   return (
-    <header className="sticky top-0 z-50 bg-slate-950/80 backdrop-blur-md border-b border-cyan-900/50 relative">
+    <header className="sticky top-0 z-50 bg-slate-950/80 backdrop-blur-md border-b border-cyan-900/50">
       {/* Glowing bottom edge */}
-      <div className="absolute bottom-0 left-0 w-full h-[1px] bg-gradient-to-r from-transparent via-cyan-500/30 to-transparent" />
+      <div className="absolute bottom-0 left-0 w-full h-px bg-linear-to-r from-transparent via-cyan-500/30 to-transparent" />
       
       <nav className="max-w-4xl mx-auto px-6 h-16 flex items-center justify-between">
         
@@ -60,7 +60,7 @@ export default function NavBar() {
                 {isActive && (
                   <motion.div
                     layoutId="active-nav-indicator"
-                    className="absolute bottom-0 left-0 right-0 h-[2px] bg-cyan-400 shadow-[0_0_10px_rgba(6,182,212,0.8)]"
+                    className="absolute bottom-0 left-0 right-0 h-0.5 bg-cyan-400 shadow-[0_0_10px_rgba(6,182,212,0.8)]"
                     initial={false}
                     transition={{
                       type: "spring",

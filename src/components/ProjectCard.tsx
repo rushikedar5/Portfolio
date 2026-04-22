@@ -18,7 +18,7 @@ export default function ProjectCard({ project }: { project: Project }) {
       <div className="absolute bottom-0 right-0 w-2 h-2 border-b border-r border-cyan-400 opacity-0 group-hover:opacity-100 transition-opacity" />
 
       {/* Holographic scanning line on hover */}
-      <div className="absolute top-0 left-0 w-full h-[1px] bg-cyan-400/50 -translate-y-full group-hover:animate-[scan_2s_ease-in-out_infinite] opacity-0 group-hover:opacity-100 pointer-events-none shadow-[0_0_10px_rgba(6,182,212,0.8)] z-50" />
+      <div className="absolute top-0 left-0 w-full h-px bg-cyan-400/50 -translate-y-full group-hover:animate-[scan_2s_ease-in-out_infinite] opacity-0 group-hover:opacity-100 pointer-events-none shadow-[0_0_10px_rgba(6,182,212,0.8)] z-50" />
 
       <CardHeader className="pb-3 relative z-10">
         <div className="flex items-center gap-2 mb-2">
@@ -30,7 +30,7 @@ export default function ProjectCard({ project }: { project: Project }) {
         </CardTitle>
       </CardHeader>
 
-      <CardContent className="flex flex-col gap-4 relative z-10 flex-grow">
+      <CardContent className="flex flex-col gap-4 relative z-10 grow">
         <p className="text-slate-400 text-sm leading-relaxed font-mono">
           {project.description}
         </p>

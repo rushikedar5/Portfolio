@@ -3,7 +3,7 @@
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
 import SocialLinks from "@/components/SocialLinks";
-import { motion } from "framer-motion";
+import { motion, Variants } from "framer-motion"; // Variants is imported here
 import { Canvas, useFrame } from "@react-three/fiber";
 import { useRef } from "react";
 import * as THREE from "three";
@@ -34,7 +34,9 @@ function WireframeNetwork() {
 }
 
 // --- Animation Variants ---
-const systemVariants = {
+
+// 1. Added ': Variants' here
+const systemVariants: Variants = {
   hidden: { opacity: 0 },
   visible: {
     opacity: 1,
@@ -42,7 +44,8 @@ const systemVariants = {
   },
 };
 
-const nodeVariants = {
+// 2. Added ': Variants' here
+const nodeVariants: Variants = {
   hidden: { opacity: 0, scale: 0.8, y: 20 },
   visible: {
     opacity: 1,
@@ -60,11 +63,12 @@ const techStack = [
 ];
 
 export default function Home() {
+  
   return (
     <div className="relative min-h-screen bg-slate-950 text-slate-300 font-sans overflow-hidden">
       
       {/* Blueprint Grid Background */}
-      <div className="absolute inset-0 z-0 bg-[linear-gradient(to_right,#06b6d415_1px,transparent_1px),linear-gradient(to_bottom,#06b6d415_1px,transparent_1px)] bg-[size:32px_32px]" />
+      <div className="absolute inset-0 z-0 bg-[linear-gradient(to_right,#06b6d415_1px,transparent_1px),linear-gradient(to_bottom,#06b6d415_1px,transparent_1px)] bg-size-[32px_32px]" />
       
       {/* 3D Blueprint Canvas */}
       <div className="absolute top-0 right-0 w-full lg:w-2/3 h-full z-0 pointer-events-none">
