@@ -1,19 +1,46 @@
 "use client";
 
 import Link from "next/link";
-import { usePathname } from "next/navigation";
+import { useEffect, useState } from "react";
 import { cn } from "@/lib/utils";
 import { motion } from "framer-motion";
 import { Terminal } from "lucide-react";
 
 const links = [
-  { href: "/", label: "Home", id: "01" },
-  { href: "/projects", label: "Projects", id: "02" },
-  { href: "/about", label: "About", id: "03" },
+  { href: "#home", label: "Home", id: "01" },
+  { href: "#about", label: "About", id: "02" },
+  { href: "#projects", label: "Projects", id: "03" },
+  { href: "#contact", label: "Contact", id: "04" },
 ];
 
 export default function NavBar() {
-  const pathname = usePathname();
+  const [activeHash, setActiveHash] = useState("#home");
+
+  useEffect(() => {
+    const handleScroll = () => {
+      const sections = links.map(link => link.href.substring(1));
+      let current = "#home";
+      
+      for (const section of sections) {
+        const element = document.getElementById(section);
+        if (element) {
+          const rect = element.getBoundingClientRect();
+          // If the section is somewhat in the top half of the screen
+          if (rect.top <= 200 && rect.bottom >= 200) {
+            current = `#${section}`;
+          }
+        }
+      }
+      
+      setActiveHash(current);
+    };
+
+    window.addEventListener("scroll", handleScroll);
+    // Initial check
+    handleScroll();
+    
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
 
   return (
     <header className="sticky top-0 z-50 bg-slate-950/80 backdrop-blur-md border-b border-cyan-900/50">
@@ -24,7 +51,7 @@ export default function NavBar() {
         
         {/* System Identity / Logo */}
         <Link 
-          href="/" 
+          href="#home" 
           className="flex items-center gap-2 text-cyan-400 font-mono tracking-tight group"
         >
           <Terminal size={18} className="group-hover:text-cyan-300 transition-colors" />
@@ -37,7 +64,7 @@ export default function NavBar() {
         {/* Navigation Links */}
         <ul className="flex items-center gap-2 md:gap-6">
           {links.map((link) => {
-            const isActive = pathname === link.href;
+            const isActive = activeHash === link.href;
 
             return (
               <li key={link.href} className="relative h-16 flex items-center">
@@ -49,6 +76,7 @@ export default function NavBar() {
                       ? "text-cyan-300 font-bold drop-shadow-[0_0_5px_rgba(6,182,212,0.5)]"
                       : "text-slate-500 hover:text-cyan-400"
                   )}
+                  onClick={() => setActiveHash(link.href)}
                 >
                   <span className="text-cyan-700/50 hidden md:inline-block">
                     {link.id}.
