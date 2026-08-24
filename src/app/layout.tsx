@@ -6,6 +6,7 @@ import Footer from "@/components/Footer";
 import Sidebar from "@/components/Sidebar";
 import { ThemeProvider } from "@/components/theme-provider";
 import { CommandMenu } from "@/components/CommandMenu";
+import CustomCursor from "@/components/CustomCursor";
 
 const instrumentSerif = Instrument_Serif({
   weight: ["400"],
@@ -55,6 +56,7 @@ export default function RootLayout({
           enableSystem
           disableTransitionOnChange
         >
+          <CustomCursor />
           <CommandMenu />
           <NavBar />
           <main className="relative w-full min-h-screen bg-grid flex flex-col items-center">
