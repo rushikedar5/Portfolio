@@ -1,29 +1,23 @@
+import TechStack from "@/components/TechStack";
+
 export default function ExperiencePage() {
   const experience = [
     {
-      year: "2023 - Present",
-      company: "Company Name",
-      role: "Full Stack Engineer",
-      description: "Led the development of core features using Next.js and Node.js. Architected scalable database solutions and mentored junior developers.",
-      tags: ["Next.js", "TypeScript", "Node.js", "PostgreSQL"]
-    },
-    {
-      year: "2021 - 2023",
-      company: "Previous Tech",
-      role: "Frontend Developer",
-      description: "Built responsive user interfaces and implemented complex state management for data-heavy dashboards.",
-      tags: ["React", "Redux", "Tailwind CSS"]
+      year: "June 2025 - Present",
+      company: "Devcons Software Pvt. Ltd.",
+      role: "Software Engineer Intern",
+      description: [
+        "Developed and maintained Kunbi Matrimony as a full-stack application using Node.js, Express.js, Next.js, and MySQL, implementing authentication, matchmaking workflows, profile management, and responsive UIs.",
+        "Developed an AI-powered assessment platform using Python, FastAPI, LangChain, and LLM APIs, enabling automated test generation, intelligent question answering, and contextual chatbot support for students and instructors.",
+        "Led full frontend migration from React.js to Next.js, improving routing, SEO, performance, and maintainability with seamless production deployment.",
+        "Enhanced E-Seva Kendra using Spring Boot, Spring Security, JWT, and MySQL with role-based authorization, RESTful APIs, and admin modules; resolved critical CORS and security filter issues."
+      ],
+      tags: ["Node.js", "Next.js", "MySQL", "Python", "FastAPI", "LangChain", "Spring Boot", "Spring Security"]
     }
   ];
 
-  const techStack = {
-    Frontend: ["React", "Next.js", "TypeScript", "Tailwind CSS", "Framer Motion"],
-    Backend: ["Node.js", "Express", "PostgreSQL", "Prisma", "Redis"],
-    Tools: ["Git", "Docker", "AWS", "Vercel", "Figma"]
-  };
-
   return (
-    <div className="flex flex-col gap-16 w-full pt-12 px-8 lg:px-12 animate-in fade-in duration-500">
+    <div className="flex flex-col gap-16 w-full pt-12 px-8 lg:px-12 animate-in fade-in duration-500 pb-20">
       
       {/* EXPERIENCE SECTION */}
       <section className="flex flex-col gap-8">
@@ -44,9 +38,21 @@ export default function ExperiencePage() {
                   </h3>
                   <p className="font-mono text-xs text-neutral-500 mt-1">{item.role}</p>
                 </div>
-                <p className="font-sans text-sm text-neutral-700 dark:text-neutral-300 leading-relaxed">
-                  {item.description}
-                </p>
+                <ul className="font-sans text-sm text-neutral-700 dark:text-neutral-300 leading-relaxed list-none space-y-2">
+                  {Array.isArray(item.description) ? (
+                    item.description.map((point, i) => (
+                      <li key={i} className="flex items-start gap-3">
+                        <span className="text-neutral-300 dark:text-neutral-700 mt-1.5">•</span>
+                        <span>{point}</span>
+                      </li>
+                    ))
+                  ) : (
+                    <li className="flex items-start gap-3">
+                      <span className="text-neutral-300 dark:text-neutral-700 mt-1.5">•</span>
+                      <span>{item.description}</span>
+                    </li>
+                  )}
+                </ul>
                 <div className="flex flex-wrap gap-2 mt-2">
                   {item.tags.map(tag => (
                     <span key={tag} className="font-mono text-[10px] uppercase tracking-widest px-2 py-1 bg-neutral-100 dark:bg-neutral-900 text-neutral-600 dark:text-neutral-400 rounded-sm border border-neutral-200 dark:border-neutral-800">
@@ -66,19 +72,8 @@ export default function ExperiencePage() {
           Tech Stack
         </h2>
         
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mt-4">
-          {Object.entries(techStack).map(([category, skills]) => (
-            <div key={category} className="flex flex-col gap-4">
-              <h3 className="font-mono text-[11px] uppercase tracking-widest text-neutral-500 font-bold">{category}</h3>
-              <div className="flex flex-wrap gap-2">
-                {skills.map(skill => (
-                  <span key={skill} className="font-sans text-xs px-2.5 py-1 bg-white dark:bg-neutral-950 text-neutral-700 dark:text-neutral-300 border border-neutral-200 dark:border-neutral-800 rounded-md hover:border-neutral-400 dark:hover:border-neutral-600 transition-colors cursor-default shadow-sm">
-                    {skill}
-                  </span>
-                ))}
-              </div>
-            </div>
-          ))}
+        <div className="mt-4">
+          <TechStack />
         </div>
       </section>
       

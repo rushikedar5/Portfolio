@@ -41,6 +41,10 @@ export default function Sidebar() {
     return () => window.removeEventListener("scroll", handleScroll);
   }, [pathname]);
 
+  if (pathname !== "/") {
+    return <div className="hidden lg:block w-[240px] bg-transparent" />;
+  }
+
   return (
     <div className="hidden lg:block w-[240px] bg-transparent">
       <div className="sticky top-24 flex flex-col pl-10 pr-4 pt-10">
@@ -48,8 +52,8 @@ export default function Sidebar() {
         
         <ul className="flex flex-col gap-4 font-mono text-[12px]">
           {sections.map(section => {
-            const isActive = pathname === "/" ? activeHash === section.id : pathname === `/${section.id}`;
-            const href = pathname === "/" ? `#${section.id}` : `/${section.id}`;
+            const isActive = activeHash === section.id;
+            const href = `#${section.id}`;
 
             return (
               <li key={section.id} className="relative flex items-center group">

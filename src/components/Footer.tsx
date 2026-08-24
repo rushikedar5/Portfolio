@@ -8,7 +8,9 @@ const quotes = [
   { text: "Simplicity is the ultimate sophistication.", author: "Leonardo da Vinci" },
   { text: "Talk is cheap. Show me the code.", author: "Linus Torvalds" },
   { text: "First, solve the problem. Then, write the code.", author: "John Johnson" },
-  { text: "Make it work, make it right, make it fast.", author: "Kent Beck" }
+  { text: "Make it work, make it right, make it fast.", author: "Kent Beck" },
+  { text: "If you don't take risks, you can't create a future.", author: "Monkey D. Luffy" },
+  { text: "I don't want to conquer anything. It's just that the person with the most freedom on the sea is the Pirate King.", author: "Monkey D. Luffy" }
 ];
 
 export default function Footer() {
@@ -47,7 +49,7 @@ export default function Footer() {
         <p className="font-sans text-[13px] text-neutral-600 dark:text-neutral-400 max-w-sm">
           If you've read this far, you might be interested in collaborating or building something great.
         </p>
-        <a href="mailto:contact@example.com" className="flex items-center gap-2 px-6 py-2.5 bg-neutral-900 dark:bg-neutral-100 text-white dark:text-black rounded-lg font-sans text-sm font-bold shadow hover:bg-neutral-800 dark:hover:bg-white transition-colors">
+        <a href="https://mail.google.com/mail/?view=cm&fs=1&to=hrushikeshkedar.dev@gmail.com" target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 px-6 py-2.5 bg-neutral-900 dark:bg-neutral-100 text-white dark:text-black rounded-lg font-sans text-sm font-bold shadow hover:bg-neutral-800 dark:hover:bg-white transition-colors">
           Let's Talk <ArrowUpRight size={16} />
         </a>
       </div>

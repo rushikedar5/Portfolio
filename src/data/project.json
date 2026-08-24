@@ -2,30 +2,23 @@
   {
     "id": "1",
     "title": "TradeStack",
-    "description": "Real-time trading platform with order execution engine, live market data via WebSockets, and Redis caching. Handled market/limit orders.",
-    "tags": ["TypeScript", "Node.js", "PostgreSQL", "Redis", "WebSocket", "BullMQ"],
+    "description": "Production-grade real-time trading platform with low-latency order execution engine (market/limit orders), WebSocket-based live market data, JWT authentication, and personalized watchlists.",
+    "tags": ["TypeScript", "Node.js", "Express.js", "PostgreSQL", "Redis", "BullMQ", "WebSocket", "JWT"],
     "githubUrl": "https://github.com/rushikedar5/TradeStack"
   },
   {
     "id": "2",
     "title": "HireVault",
-    "description": "AI-powered SaaS job application tracker. Integrates Groq AI (LLaMA 3) for ATS scoring, resume analysis, and Razorpay for subscriptions.",
-    "tags": ["Next.js", "TypeScript", "PostgreSQL", "Prisma", "Groq AI", "Razorpay"],
+    "description": "Production-grade AI-powered SaaS job application tracker. Integrates Groq AI (LLaMA 3.3-70B) for structured ATS evaluations and Razorpay for secure subscription-based role management.",
+    "tags": ["Next.js", "TypeScript", "Node.js", "Express.js", "PostgreSQL", "Prisma", "Groq AI", "Razorpay", "Cloudinary"],
     "githubUrl": "https://github.com/rushikedar5/HireVault",
     "liveUrl": "https://hirevault.vercel.app"
   },
   {
     "id": "3",
-    "title": "AI-Assistant",
-    "description": "An AI-Assistant CLI tool built with Node.js and Groq's LLaMA 3 model.",
-    "tags": ["TypeScript", "Groq", "Node.js"],
-    "githubUrl": "https://github.com/rushikedar5/AI-Chatbot-CLI"
-  },
-  {
-    "id": "4",
-    "title": "Document Q&A Bot",
-    "description": "RAG-based document assistant using ChromaDB and local embeddings.",
-    "tags": ["TypeScript", "ChromaDB", "RAG"],
-    "githubUrl": "https://github.com/rushikedar5/Document-Q-A-Bot"
+    "title": "Smart Hospital Queue & OPD Management",
+    "description": "Production-ready hospital management system with real-time OPD queue tracking, appointment scheduling, and patient records. Scalable backend with 9 normalized entities and global exception handling.",
+    "tags": ["Java", "Spring Boot", "Spring Security", "JPA", "MySQL", "JWT", "Next.js", "TypeScript", "Tailwind CSS"],
+    "githubUrl": "https://github.com/rushikedar5/Smart-Hospital-Management"
   }
 ]

@@ -1,14 +1,16 @@
 "use client";
 
 import { useState } from "react";
+import Link from "next/link";
 import ProjectCard from "./ProjectCard";
 import { Project } from "@/types";
 
 interface ProjectsSectionProps {
   projects: Project[];
+  limit?: number;
 }
 
-export default function ProjectsSection({ projects }: ProjectsSectionProps) {
+export default function ProjectsSection({ projects, limit }: ProjectsSectionProps) {
   const [projectFilter, setProjectFilter] = useState("All");
 
   const filteredProjects = projects.filter((project) => {
@@ -33,6 +35,9 @@ export default function ProjectsSection({ projects }: ProjectsSectionProps) {
     
     return true;
   });
+
+  const displayedProjects = limit ? filteredProjects.slice(0, limit) : filteredProjects;
+  const showSeeAll = limit && filteredProjects.length > limit;
 
   return (
     <div className="flex flex-col w-full animate-in fade-in duration-500">
@@ -63,8 +68,8 @@ export default function ProjectsSection({ projects }: ProjectsSectionProps) {
 
       <div className="px-8 lg:px-12 py-8">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-          {filteredProjects.length > 0 ? (
-            filteredProjects.map((project) => (
+          {displayedProjects.length > 0 ? (
+            displayedProjects.map((project) => (
               <ProjectCard key={project.id} project={project} />
             ))
           ) : (
@@ -73,6 +78,17 @@ export default function ProjectsSection({ projects }: ProjectsSectionProps) {
             </div>
           )}
         </div>
+        
+        {showSeeAll && (
+          <div className="mt-12 flex justify-center">
+            <Link 
+              href="/projects" 
+              className="flex items-center gap-2 px-6 py-2 border border-neutral-200 dark:border-neutral-800 rounded-md bg-white dark:bg-neutral-900 hover:bg-neutral-50 dark:hover:bg-neutral-800 transition-colors text-neutral-700 dark:text-neutral-300 font-sans text-sm font-medium shadow-sm"
+            >
+              See All <span aria-hidden="true">&rarr;</span>
+            </Link>
+          </div>
+        )}
       </div>
     </div>
   );

@@ -1,9 +1,11 @@
 "use client";
 
+import React from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
+import { useTheme } from "next-themes";
 import { cn } from "@/lib/utils";
-import { Search, Moon, Code2 } from "lucide-react";
+import { Search, Moon, Sun, Code2 } from "lucide-react";
 
 const links = [
   { href: "/", label: "Home" },
@@ -14,6 +16,12 @@ const links = [
 
 export default function NavBar() {
   const pathname = usePathname();
+  const { theme, setTheme } = useTheme();
+  const [mounted, setMounted] = React.useState(false);
+
+  React.useEffect(() => {
+    setMounted(true);
+  }, []);
 
   return (
     <header className="sticky top-0 z-50 bg-[#fafafa]/90 dark:bg-neutral-950/90 backdrop-blur-md border-b border-neutral-200 dark:border-neutral-800">
@@ -63,11 +71,25 @@ export default function NavBar() {
 
             {/* Utility Buttons */}
             <div className="flex items-center gap-3 ml-2">
-              <button className="flex items-center justify-center w-[34px] h-[34px] rounded-full border border-neutral-200 dark:border-neutral-800 text-neutral-600 hover:text-neutral-900 dark:hover:text-neutral-100 transition-colors bg-white dark:bg-neutral-900 shadow-sm">
+              <button 
+                onClick={() => document.dispatchEvent(new CustomEvent("open-command-menu"))}
+                className="flex items-center justify-center w-[34px] h-[34px] rounded-full border border-neutral-200 dark:border-neutral-800 text-neutral-600 hover:text-neutral-900 dark:hover:text-neutral-100 transition-colors bg-white dark:bg-neutral-900 shadow-sm"
+              >
                 <Search size={14} strokeWidth={1.5} />
               </button>
-              <button className="flex items-center justify-center w-[34px] h-[34px] rounded-full border border-neutral-200 dark:border-neutral-800 text-neutral-600 hover:text-neutral-900 dark:hover:text-neutral-100 transition-colors bg-white dark:bg-neutral-900 shadow-sm">
-                <Moon size={14} strokeWidth={1.5} />
+              <button 
+                onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
+                className="flex items-center justify-center w-[34px] h-[34px] rounded-full border border-neutral-200 dark:border-neutral-800 text-neutral-600 hover:text-neutral-900 dark:hover:text-neutral-100 transition-colors bg-white dark:bg-neutral-900 shadow-sm"
+              >
+                {mounted ? (
+                  theme === "dark" ? (
+                    <Sun size={14} strokeWidth={1.5} />
+                  ) : (
+                    <Moon size={14} strokeWidth={1.5} />
+                  )
+                ) : (
+                  <Moon size={14} strokeWidth={1.5} />
+                )}
               </button>
             </div>
           </div>

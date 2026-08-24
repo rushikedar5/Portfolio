@@ -1,3 +1,5 @@
+"use client";
+
 import Image from "next/image";
 import { MapPin, Search, ArrowUpRight, Mail, FileText } from "lucide-react";
 import { FaGithub, FaLinkedin } from "react-icons/fa6";
@@ -7,37 +9,20 @@ import TechStack from "@/components/TechStack";
 import projects from "@/data/project.json";
 
 // --- Data ---
-const techStack = {
-  Languages: ["TypeScript", "JavaScript", "Python", "Java"],
-  Frontend: ["Next.js", "React", "Tailwind CSS", "Framer Motion"],
-  Backend: ["Node.js", "Express", "SpringBoot", "FastAPI"],
-  Databases: ["PostgreSQL", "MySQL", "MongoDB", "Redis"],
-  "DevOps & Tools": ["Docker", "Prisma ORM", "Git", "Linux"],
-  AI: ["OpenAI API", "LangChain", "RAG", "MCP"]
-};
 
 const experience = [
   {
-    year: "2024 — Present",
+    year: "June 2025 — Present",
     company: "Devcons Software Pvt. Ltd.",
-    role: "Software Engineer",
-    description: "Developed the Kunbi Matrimony and E-Seva Kendra platforms. Led React to Next.js migration. Engineered scalable RESTful APIs with Spring Boot, Node.js, Next.js, and MySQL. Resolved complex Spring Security and JWT issues.",
-    tags: ["React", "Next.js", "Spring Boot", "Node.js", "MySQL"]
-  },
-  {
-    year: "2023 — 2024",
-    company: "Backend Development",
-    role: "Full Stack Focus",
-    description: "Architecting robust systems bridging Java/SpringBoot and TypeScript/Express. Implementing PostgreSQL, Prisma ORM, JWT auth, WebSockets, and containerization with Docker.",
-    tags: ["Java", "TypeScript", "PostgreSQL", "Docker"]
-  },
-  {
-    year: "2023 — Present",
-    company: "Generative AI",
-    role: "Specialization",
-    description: "Advancing through hands-on development—from foundational LLM API integrations (OpenAI, LangChain, FastAPI) to deploying autonomous agents with sophisticated RAG pipelines.",
-    tags: ["Python", "FastAPI", "OpenAI", "LangChain", "RAG"]
-  },
+    role: "Software Engineer Intern",
+    description: [
+      "Developed and maintained Kunbi Matrimony as a full-stack application using Node.js, Express.js, Next.js, and MySQL, implementing authentication, matchmaking workflows, profile management, and responsive UIs.",
+      "Developed an AI-powered assessment platform using Python, FastAPI, LangChain, and LLM APIs, enabling automated test generation, intelligent question answering, and contextual chatbot support for students and instructors.",
+      "Led full frontend migration from React.js to Next.js, improving routing, SEO, performance, and maintainability with seamless production deployment.",
+      "Enhanced E-Seva Kendra using Spring Boot, Spring Security, JWT, and MySQL with role-based authorization, RESTful APIs, and admin modules; resolved critical CORS and security filter issues."
+    ],
+    tags: ["Node.js", "Next.js", "MySQL", "Python", "FastAPI", "LangChain", "Spring Boot", "Spring Security"]
+  }
 ];
 
 export default function Home() {
@@ -50,14 +35,14 @@ export default function Home() {
       <section id="home" className="flex flex-col gap-6 pt-6 px-8 lg:px-12 pb-12 scroll-mt-24">
         {/* Banner Image Placeholder */}
         <div className="w-full h-32 md:h-48 rounded-xl bg-neutral-200 dark:bg-neutral-800 border border-neutral-300 dark:border-neutral-700 overflow-hidden relative shadow-sm">
-           <Image src="/profile.jpg" alt="Banner" fill className="object-cover opacity-50 grayscale mix-blend-multiply" />
+           <Image src="/banner.png" alt="Banner" fill className="object-cover dark:invert transition-all duration-100" />
         </div>
         
         <div className="flex items-start justify-between mt-2">
           <div className="flex gap-6 items-center">
             {/* Square Avatar */}
             <div className="w-20 h-20 md:w-24 md:h-24 rounded-2xl bg-neutral-100 dark:bg-neutral-900 border border-neutral-200 dark:border-neutral-800 shrink-0 overflow-hidden relative shadow-sm">
-              <Image src="/profile.jpg" alt="Hrushikesh Kedar" fill className="object-cover grayscale" />
+              <Image src="/profile.jpg" alt="Hrushikesh Kedar" fill className="object-cover" />
             </div>
             
             <div className="flex flex-col justify-center">
@@ -79,7 +64,10 @@ export default function Home() {
           </div>
 
           {/* Command Button */}
-          <button className="hidden md:flex items-center gap-2 px-3 py-1.5 border border-neutral-200 dark:border-neutral-800 rounded-md bg-white dark:bg-neutral-900 hover:bg-neutral-50 dark:hover:bg-neutral-800 transition-colors text-neutral-500 font-mono text-[11px] font-medium shadow-sm h-8 self-center">
+          <button 
+            onClick={() => document.dispatchEvent(new CustomEvent("open-command-menu"))}
+            className="hidden md:flex items-center gap-2 px-3 py-1.5 border border-neutral-200 dark:border-neutral-800 rounded-md bg-white dark:bg-neutral-900 hover:bg-neutral-50 dark:hover:bg-neutral-800 transition-colors text-neutral-500 font-mono text-[11px] font-medium shadow-sm h-8 self-center"
+          >
             <Search size={12} /> ⌘K
           </button>
         </div>
@@ -138,7 +126,7 @@ export default function Home() {
           <a href="https://linkedin.com" target="_blank" className="flex items-center gap-2 px-4 py-2 bg-white dark:bg-neutral-950 border border-neutral-200 dark:border-neutral-800 hover:bg-neutral-50 dark:hover:bg-neutral-900 text-neutral-700 dark:text-neutral-300 transition-colors rounded-md shadow-sm group">
             <FaLinkedin size={14} /> LinkedIn <ArrowUpRight size={12} className="opacity-50 group-hover:opacity-100 transition-opacity" />
           </a>
-          <a href="mailto:hrushikeshkedar.dev@gmail.com" className="flex items-center gap-2 px-4 py-2 bg-white dark:bg-neutral-950 border border-neutral-200 dark:border-neutral-800 hover:bg-neutral-50 dark:hover:bg-neutral-900 text-neutral-700 dark:text-neutral-300 transition-colors rounded-md shadow-sm group">
+          <a href="https://mail.google.com/mail/?view=cm&fs=1&to=hrushikeshkedar.dev@gmail.com" target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 px-4 py-2 bg-white dark:bg-neutral-950 border border-neutral-200 dark:border-neutral-800 hover:bg-neutral-50 dark:hover:bg-neutral-900 text-neutral-700 dark:text-neutral-300 transition-colors rounded-md shadow-sm group">
             <Mail size={14} /> Email <ArrowUpRight size={12} className="opacity-50 group-hover:opacity-100 transition-opacity" />
           </a>
           <a href="/resume.pdf" target="_blank" className="flex items-center gap-2 px-4 py-2 bg-white dark:bg-neutral-950 border border-neutral-200 dark:border-neutral-800 hover:bg-neutral-50 dark:hover:bg-neutral-900 text-neutral-700 dark:text-neutral-300 transition-colors rounded-md shadow-sm group">
@@ -149,7 +137,7 @@ export default function Home() {
 
       {/* PROJECTS SECTION */}
       <section id="projects" className="flex flex-col w-full scroll-mt-24">
-        <ProjectsSection projects={projects as any} />
+        <ProjectsSection projects={projects as any} limit={4} />
       </section>
 
       <div className="relative w-full h-16 border-y border-neutral-200 dark:border-neutral-800 flex items-center px-8 lg:px-12 mt-12">
@@ -172,9 +160,21 @@ export default function Home() {
                   </h3>
                   <p className="font-mono text-xs text-neutral-500 mt-1">{item.role}</p>
                 </div>
-                <p className="font-sans text-sm text-neutral-700 dark:text-neutral-300 leading-relaxed">
-                  {item.description}
-                </p>
+                <ul className="font-sans text-sm text-neutral-700 dark:text-neutral-300 leading-relaxed list-none space-y-2">
+                  {Array.isArray(item.description) ? (
+                    item.description.map((point, i) => (
+                      <li key={i} className="flex items-start gap-3">
+                        <span className="text-neutral-300 dark:text-neutral-700 mt-1.5">•</span>
+                        <span>{point}</span>
+                      </li>
+                    ))
+                  ) : (
+                    <li className="flex items-start gap-3">
+                      <span className="text-neutral-300 dark:text-neutral-700 mt-1.5">•</span>
+                      <span>{item.description}</span>
+                    </li>
+                  )}
+                </ul>
                 <div className="flex flex-wrap gap-2 mt-2">
                   {item.tags.map(tag => (
                     <span key={tag} className="font-mono text-[10px] uppercase tracking-widest px-2 py-1 bg-neutral-100 dark:bg-neutral-900 text-neutral-600 dark:text-neutral-400 rounded-sm border border-neutral-200 dark:border-neutral-800">
