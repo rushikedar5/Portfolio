@@ -1,54 +1,87 @@
-import SocialLinks from "./SocialLinks";
-import { Button } from "./ui/button";
-import Link from "next/link";
-import { Terminal } from "lucide-react";
+"use client";
+
+import { useState, useEffect } from "react";
+import { ArrowUpRight } from "lucide-react";
+
+const quotes = [
+  { text: "The biggest risk is not taking any risk.", author: "Mark Zuckerberg" },
+  { text: "Simplicity is the ultimate sophistication.", author: "Leonardo da Vinci" },
+  { text: "Talk is cheap. Show me the code.", author: "Linus Torvalds" },
+  { text: "First, solve the problem. Then, write the code.", author: "John Johnson" },
+  { text: "Make it work, make it right, make it fast.", author: "Kent Beck" }
+];
 
 export default function Footer() {
+  const [quoteIndex, setQuoteIndex] = useState(0);
+  const [time, setTime] = useState("");
+
+  useEffect(() => {
+    // Quote rotation
+    const quoteInterval = setInterval(() => {
+      setQuoteIndex((prev) => (prev + 1) % quotes.length);
+    }, 5000);
+
+    // Live clock
+    const updateTime = () => {
+      setTime(new Date().toLocaleTimeString('en-US', { hour: '2-digit', minute: '2-digit', second: '2-digit' }));
+    };
+    updateTime(); // initial call
+    const timeInterval = setInterval(updateTime, 1000);
+
+    return () => {
+      clearInterval(quoteInterval);
+      clearInterval(timeInterval);
+    };
+  }, []);
+
+  const currentQuote = quotes[quoteIndex];
+
   return (
-    <footer className="relative border-t border-cyan-900/50 mt-24 bg-slate-950 overflow-hidden">
-      {/* Glowing top edge */}
-      <div className="absolute top-0 left-0 w-full h-px bg-linear-to-r from-transparent via-cyan-500/40 to-transparent" />
-      
-      {/* Subtle blueprint grid for the footer background */}
-      <div className="absolute inset-0 z-0 bg-[linear-gradient(to_right,#06b6d405_1px,transparent_1px),linear-gradient(to_bottom,#06b6d405_1px,transparent_1px)] bg-size-[16px_16px] pointer-events-none" />
+    <div className="flex flex-col w-full mt-12">
+      {/* Scrolled Too Far */}
+      <div className="relative w-full h-16 border-y border-neutral-200 dark:border-neutral-800 flex items-center px-8 lg:px-12">
+        <div className="absolute inset-0 bg-hatch opacity-50" />
+        <h2 className="relative font-serif text-2xl text-neutral-900 dark:text-neutral-100 z-10">Scrolled Too Far</h2>
+      </div>
+      <div className="flex flex-col items-center justify-center gap-6 py-16 px-8 text-center">
+        <p className="font-sans text-[13px] text-neutral-600 dark:text-neutral-400 max-w-sm">
+          If you've read this far, you might be interested in collaborating or building something great.
+        </p>
+        <a href="mailto:contact@example.com" className="flex items-center gap-2 px-6 py-2.5 bg-neutral-900 dark:bg-neutral-100 text-white dark:text-black rounded-lg font-sans text-sm font-bold shadow hover:bg-neutral-800 dark:hover:bg-white transition-colors">
+          Let's Talk <ArrowUpRight size={16} />
+        </a>
+      </div>
 
-      <div className="relative z-10 max-w-4xl mx-auto px-6 py-8 flex flex-col sm:flex-row items-center justify-between gap-6">
-        
-        {/* System Status / Copyright */}
-        <div className="flex flex-col items-center sm:items-start gap-2">
-          <div className="flex items-center gap-2 text-cyan-500 font-mono text-xs tracking-widest uppercase opacity-80">
-            <Terminal size={12} className="animate-pulse" />
-            <span>System.Status // Online</span>
-          </div>
-          <p className="text-xs font-mono text-slate-500 tracking-wide">
-            © {new Date().getFullYear()} Kedar Hrushikesh. 
-            <span className="hidden sm:inline text-cyan-900 mx-2">|</span> 
-            <br className="sm:hidden" />
-            Built on Next.js Infrastructure.
-          </p>
-        </div>
+      {/* Quote */}
+      <div className="relative w-full h-4 border-t border-neutral-200 dark:border-neutral-800 flex items-center px-8 lg:px-12">
+        <div className="absolute inset-0 bg-hatch opacity-50" />
+      </div>
+      <div className="flex flex-col items-center justify-center gap-4 py-16 px-8 text-center border-t border-neutral-200 dark:border-neutral-800 min-h-[250px]">
+        <span className="font-serif text-3xl text-neutral-300 dark:text-neutral-700">“</span>
+        <p className="font-serif italic text-2xl text-neutral-800 dark:text-neutral-200 tracking-tight animate-in fade-in duration-500" key={currentQuote.text}>
+          {currentQuote.text}
+        </p>
+        <p className="font-mono text-[10px] uppercase tracking-[0.2em] text-neutral-400 mt-2 animate-in fade-in duration-500" key={currentQuote.author}>
+          - {currentQuote.author}
+        </p>
+      </div>
 
-        {/* Links & Extraction Protocol (Resume) */}
-        <div className="flex items-center gap-6">
-          <div className="opacity-70 hover:opacity-100 transition-opacity">
-            <SocialLinks />
-          </div>
-          
-          {/* Decorative vertical divider */}
-          <div className="hidden sm:block w-px h-8 bg-cyan-900/50" />
-
-          <Link href="/resume.pdf" target="_blank" download>
-            <Button 
-              size="sm" 
-              variant="outline" 
-              className="border-cyan-800/60 text-cyan-400 hover:text-cyan-300 hover:bg-cyan-500/10 rounded-none font-mono tracking-widest text-[10px] sm:text-xs uppercase transition-all shadow-[0_0_10px_rgba(6,182,212,0.1)] group"
-            >
-              <span className="text-cyan-700 mr-2 group-hover:text-cyan-400 transition-colors">&gt;</span>
-              [ EXTRACT_RESUME ]
-            </Button>
-          </Link>
+      {/* Copyright */}
+      <div className="relative w-full h-4 border-t border-neutral-200 dark:border-neutral-800 flex items-center px-8 lg:px-12">
+        <div className="absolute inset-0 bg-hatch opacity-50" />
+      </div>
+      <div className="flex flex-col items-center justify-center gap-3 py-16 px-8 text-center border-t border-neutral-200 dark:border-neutral-800">
+        <p className="font-sans text-[13px] text-neutral-600 dark:text-neutral-400">
+          Designed & Developed by <strong className="text-neutral-900 dark:text-neutral-100 font-bold">Hrushikesh Kedar</strong>
+        </p>
+        <p className="font-mono text-[11px] text-neutral-400">
+          © {new Date().getFullYear()} All rights reserved.
+        </p>
+        <div className="flex items-center justify-center gap-2 font-mono text-[11px] text-neutral-400 mt-1">
+          <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse" /> 
+          Pune, India {time && `- ${time}`}
         </div>
       </div>
-    </footer>
+    </div>
   );
 }

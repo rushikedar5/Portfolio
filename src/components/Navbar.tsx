@@ -1,108 +1,83 @@
 "use client";
 
 import Link from "next/link";
-import { useEffect, useState } from "react";
+import { usePathname } from "next/navigation";
 import { cn } from "@/lib/utils";
-import { motion } from "framer-motion";
-import { Terminal } from "lucide-react";
+import { Search, Moon, Code2 } from "lucide-react";
 
 const links = [
-  { href: "#home", label: "Home", id: "01" },
-  { href: "#about", label: "About", id: "02" },
-  { href: "#projects", label: "Projects", id: "03" },
-  { href: "#contact", label: "Contact", id: "04" },
+  { href: "/", label: "Home" },
+  { href: "/projects", label: "Projects" },
+  { href: "/experience", label: "Experience" },
+  { href: "/contact", label: "Contact" },
 ];
 
 export default function NavBar() {
-  const [activeHash, setActiveHash] = useState("#home");
-
-  useEffect(() => {
-    const handleScroll = () => {
-      const sections = links.map(link => link.href.substring(1));
-      let current = "#home";
-      
-      for (const section of sections) {
-        const element = document.getElementById(section);
-        if (element) {
-          const rect = element.getBoundingClientRect();
-          // If the section is somewhat in the top half of the screen
-          if (rect.top <= 200 && rect.bottom >= 200) {
-            current = `#${section}`;
-          }
-        }
-      }
-      
-      setActiveHash(current);
-    };
-
-    window.addEventListener("scroll", handleScroll);
-    // Initial check
-    handleScroll();
-    
-    return () => window.removeEventListener("scroll", handleScroll);
-  }, []);
+  const pathname = usePathname();
 
   return (
-    <header className="sticky top-0 z-50 bg-slate-950/80 backdrop-blur-md border-b border-cyan-900/50">
-      {/* Glowing bottom edge */}
-      <div className="absolute bottom-0 left-0 w-full h-px bg-linear-to-r from-transparent via-cyan-500/30 to-transparent" />
-      
-      <nav className="max-w-4xl mx-auto px-6 h-16 flex items-center justify-between">
+    <header className="sticky top-0 z-50 bg-[#fafafa]/90 dark:bg-neutral-950/90 backdrop-blur-md border-b border-neutral-200 dark:border-neutral-800">
+      <div className="w-full max-w-7xl mx-auto flex h-16">
         
-        {/* System Identity / Logo */}
-        <Link 
-          href="#home" 
-          className="flex items-center gap-2 text-cyan-400 font-mono tracking-tight group"
-        >
-          <Terminal size={18} className="group-hover:text-cyan-300 transition-colors" />
-          <span className="font-bold text-lg drop-shadow-[0_0_8px_rgba(6,182,212,0.5)]">
-            rushi.dev
-          </span>
-          <span className="text-cyan-600 animate-pulse">_</span>
-        </Link>
-
-        {/* Navigation Links */}
-        <ul className="flex items-center gap-2 md:gap-6">
-          {links.map((link) => {
-            const isActive = activeHash === link.href;
-
-            return (
-              <li key={link.href} className="relative h-16 flex items-center">
-                <Link
-                  href={link.href}
-                  className={cn(
-                    "flex items-center gap-2 px-2 py-1 font-mono text-xs uppercase tracking-widest transition-colors",
-                    isActive
-                      ? "text-cyan-300 font-bold drop-shadow-[0_0_5px_rgba(6,182,212,0.5)]"
-                      : "text-slate-500 hover:text-cyan-400"
-                  )}
-                  onClick={() => setActiveHash(link.href)}
-                >
-                  <span className="text-cyan-700/50 hidden md:inline-block">
-                    {link.id}.
-                  </span>
-                  {link.label}
-                </Link>
-
-                {/* Animated Active Indicator */}
-                {isActive && (
-                  <motion.div
-                    layoutId="active-nav-indicator"
-                    className="absolute bottom-0 left-0 right-0 h-0.5 bg-cyan-400 shadow-[0_0_10px_rgba(6,182,212,0.8)]"
-                    initial={false}
-                    transition={{
-                      type: "spring",
-                      stiffness: 300,
-                      damping: 30,
-                    }}
-                  />
-                )}
-              </li>
-            );
-          })}
-        </ul>
+        {/* Left Spacer (matches page grid) */}
+        <div className="hidden lg:block w-[240px] border-r border-transparent lg:border-neutral-200 dark:lg:border-neutral-800" />
         
-      </nav>
+        {/* Main Content Width (Matches Page Grid) */}
+        <div className="flex-1 w-full max-w-3xl mx-auto flex items-center justify-between px-8 lg:px-12 border-r border-transparent lg:border-neutral-200 dark:lg:border-neutral-800">
+          
+          {/* Logo Area */}
+          <div className="flex items-center">
+            <Link 
+              href="/" 
+              className="font-serif text-[22px] text-neutral-800 dark:text-neutral-200"
+            >
+              Hrushikesh
+            </Link>
+          </div>
+
+          {/* Right Area: Nav Links + Utilities */}
+          <div className="flex items-center gap-8">
+            {/* Nav Links */}
+            <ul className="hidden md:flex items-center gap-6">
+              {links.map((link) => {
+                const isActive = pathname === link.href;
+                return (
+                  <li key={link.href} className="relative">
+                    <Link
+                      href={link.href}
+                      className={cn(
+                        "relative text-[13px] font-sans pb-1 transition-colors",
+                        "after:absolute after:bottom-0 after:left-0 after:right-0 after:h-[2px] after:bg-neutral-900 dark:after:bg-neutral-100",
+                        "after:transition-transform after:duration-300 after:ease-out after:origin-left",
+                        isActive
+                          ? "text-neutral-900 dark:text-neutral-100 font-bold after:scale-x-100"
+                          : "text-neutral-600 hover:text-neutral-900 dark:hover:text-neutral-300 after:scale-x-0 hover:after:scale-x-100"
+                      )}
+                    >
+                      {link.label}
+                    </Link>
+                  </li>
+                );
+              })}
+            </ul>
+
+            {/* Utility Buttons */}
+            <div className="flex items-center gap-3 ml-2">
+              <button className="flex items-center justify-center w-[34px] h-[34px] rounded-full border border-neutral-200 dark:border-neutral-800 text-neutral-600 hover:text-neutral-900 dark:hover:text-neutral-100 transition-colors bg-white dark:bg-neutral-900 shadow-sm">
+                <Search size={14} strokeWidth={1.5} />
+              </button>
+              <button className="flex items-center justify-center w-[34px] h-[34px] rounded-full border border-neutral-200 dark:border-neutral-800 text-neutral-600 hover:text-neutral-900 dark:hover:text-neutral-100 transition-colors bg-white dark:bg-neutral-900 shadow-sm">
+                <Moon size={14} strokeWidth={1.5} />
+              </button>
+            </div>
+          </div>
+
+        </div>
+
+        {/* Right Index Area (Empty in header, just matching border) */}
+        <div className="hidden lg:block w-[240px]" />
+
+      </div>
     </header>
   );
 }

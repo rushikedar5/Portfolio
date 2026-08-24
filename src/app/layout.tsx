@@ -1,16 +1,24 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
+import { Instrument_Serif, Inter, JetBrains_Mono } from "next/font/google";
 import "./globals.css";
 import NavBar from "@/components/Navbar";
 import Footer from "@/components/Footer";
+import Sidebar from "@/components/Sidebar";
 
-const geistSans = Geist({
-  variable: "--font-geist-sans",
+const instrumentSerif = Instrument_Serif({
+  weight: ["400"],
+  style: ["normal", "italic"],
+  variable: "--font-instrument-serif",
   subsets: ["latin"],
 });
 
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
+const inter = Inter({
+  variable: "--font-inter",
+  subsets: ["latin"],
+});
+
+const jetbrainsMono = JetBrains_Mono({
+  variable: "--font-jetbrains-mono",
   subsets: ["latin"],
 });
 
@@ -35,22 +43,27 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`${geistSans.variable} ${geistMono.variable} dark`}
+      className={`${instrumentSerif.variable} ${inter.variable} ${jetbrainsMono.variable}`}
     >
-      {/* 1. Body gets the dark theme background and min-h-screen */}
-      <body className="min-h-screen flex flex-col bg-slate-950 text-slate-300 antialiased font-sans">
-        
-        {/* 2. NavBar MUST be inside the body */}
+      <body className="min-h-screen flex flex-col bg-[#fafafa] dark:bg-neutral-950 text-neutral-900 dark:text-neutral-100 antialiased font-sans transition-colors duration-300">
         <NavBar />
-        
-        {/* 3. Main wrapper uses flex-grow to push the footer down */}
-        <main className="grow relative z-10 w-full">
-          {children}
+        <main className="relative w-full min-h-screen bg-grid flex flex-col items-center">
+          {/* Wrapper to align with Navbar */}
+          <div className="w-full max-w-7xl mx-auto flex">
+            
+            {/* Left Spacer */}
+            <div className="hidden lg:block w-[240px] border-r border-transparent lg:border-neutral-200 dark:lg:border-neutral-800" />
+            
+            {/* MAIN CONTENT COLUMN */}
+            <div className="flex-1 w-full max-w-4xl mx-auto bg-white dark:bg-neutral-950/80 shadow-sm border-r border-transparent lg:border-neutral-200 dark:lg:border-neutral-800 pb-12">
+              {children}
+              <Footer />
+            </div>
+
+            {/* RIGHT SIDEBAR */}
+            <Sidebar />
+          </div>
         </main>
-        
-        {/* 4. Footer MUST be inside the body */}
-        <Footer />
-        
       </body>
     </html>
   );
