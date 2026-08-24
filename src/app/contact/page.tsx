@@ -14,13 +14,13 @@ export default function ContactPage() {
         </p>
 
         <div className="flex flex-wrap gap-4 font-mono text-sm mt-4">
-          <a href="https://github.com" target="_blank" className="flex items-center gap-2 px-4 py-3 bg-white dark:bg-neutral-950 border border-neutral-200 dark:border-neutral-800 hover:bg-neutral-50 dark:hover:bg-neutral-900 text-neutral-700 dark:text-neutral-300 transition-colors rounded-lg shadow-sm group">
+          <a href="https://github.com/rushikedar5" target="_blank" className="flex items-center gap-2 px-4 py-3 bg-white dark:bg-neutral-950 border border-neutral-200 dark:border-neutral-800 hover:bg-neutral-50 dark:hover:bg-neutral-900 text-neutral-700 dark:text-neutral-300 transition-colors rounded-lg shadow-sm group">
             <FaGithub size={16} /> GitHub <ArrowUpRight size={14} className="opacity-50 group-hover:opacity-100 transition-opacity" />
           </a>
-          <a href="https://linkedin.com" target="_blank" className="flex items-center gap-2 px-4 py-3 bg-white dark:bg-neutral-950 border border-neutral-200 dark:border-neutral-800 hover:bg-neutral-50 dark:hover:bg-neutral-900 text-neutral-700 dark:text-neutral-300 transition-colors rounded-lg shadow-sm group">
+          <a href="https://linkedin.com/in/rushikedar5" target="_blank" className="flex items-center gap-2 px-4 py-3 bg-white dark:bg-neutral-950 border border-neutral-200 dark:border-neutral-800 hover:bg-neutral-50 dark:hover:bg-neutral-900 text-neutral-700 dark:text-neutral-300 transition-colors rounded-lg shadow-sm group">
             <FaLinkedin size={16} /> LinkedIn <ArrowUpRight size={14} className="opacity-50 group-hover:opacity-100 transition-opacity" />
           </a>
-          <a href="mailto:hrushikeshkedar.dev@gmail.com" className="flex items-center gap-2 px-4 py-3 bg-white dark:bg-neutral-950 border border-neutral-200 dark:border-neutral-800 hover:bg-neutral-50 dark:hover:bg-neutral-900 text-neutral-700 dark:text-neutral-300 transition-colors rounded-lg shadow-sm group">
+          <a href="https://mail.google.com/mail/?view=cm&fs=1&to=hrushikeshkedar.dev@gmail.com" target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 px-4 py-3 bg-white dark:bg-neutral-950 border border-neutral-200 dark:border-neutral-800 hover:bg-neutral-50 dark:hover:bg-neutral-900 text-neutral-700 dark:text-neutral-300 transition-colors rounded-lg shadow-sm group">
             <Mail size={16} /> Email <ArrowUpRight size={14} className="opacity-50 group-hover:opacity-100 transition-opacity" />
           </a>
           <a href="/resume.pdf" target="_blank" className="flex items-center gap-2 px-4 py-3 bg-white dark:bg-neutral-950 border border-neutral-200 dark:border-neutral-800 hover:bg-neutral-50 dark:hover:bg-neutral-900 text-neutral-700 dark:text-neutral-300 transition-colors rounded-lg shadow-sm group">

@@ -120,10 +120,10 @@ export default function Home() {
       {/* CONTACT SECTION */}
       <section id="contact" className="flex flex-col gap-8 px-8 lg:px-12 py-8 scroll-mt-24">
         <div className="flex flex-wrap gap-4 font-mono text-xs">
-          <a href="https://github.com" target="_blank" className="flex items-center gap-2 px-4 py-2 bg-white dark:bg-neutral-950 border border-neutral-200 dark:border-neutral-800 hover:bg-neutral-50 dark:hover:bg-neutral-900 text-neutral-700 dark:text-neutral-300 transition-colors rounded-md shadow-sm group">
+          <a href="https://github.com/rushikedar5" target="_blank" className="flex items-center gap-2 px-4 py-2 bg-white dark:bg-neutral-950 border border-neutral-200 dark:border-neutral-800 hover:bg-neutral-50 dark:hover:bg-neutral-900 text-neutral-700 dark:text-neutral-300 transition-colors rounded-md shadow-sm group">
             <FaGithub size={14} /> GitHub <ArrowUpRight size={12} className="opacity-50 group-hover:opacity-100 transition-opacity" />
           </a>
-          <a href="https://linkedin.com" target="_blank" className="flex items-center gap-2 px-4 py-2 bg-white dark:bg-neutral-950 border border-neutral-200 dark:border-neutral-800 hover:bg-neutral-50 dark:hover:bg-neutral-900 text-neutral-700 dark:text-neutral-300 transition-colors rounded-md shadow-sm group">
+          <a href="https://linkedin.com/in/rushikedar5" target="_blank" className="flex items-center gap-2 px-4 py-2 bg-white dark:bg-neutral-950 border border-neutral-200 dark:border-neutral-800 hover:bg-neutral-50 dark:hover:bg-neutral-900 text-neutral-700 dark:text-neutral-300 transition-colors rounded-md shadow-sm group">
             <FaLinkedin size={14} /> LinkedIn <ArrowUpRight size={12} className="opacity-50 group-hover:opacity-100 transition-opacity" />
           </a>
           <a href="https://mail.google.com/mail/?view=cm&fs=1&to=hrushikeshkedar.dev@gmail.com" target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 px-4 py-2 bg-white dark:bg-neutral-950 border border-neutral-200 dark:border-neutral-800 hover:bg-neutral-50 dark:hover:bg-neutral-900 text-neutral-700 dark:text-neutral-300 transition-colors rounded-md shadow-sm group">
