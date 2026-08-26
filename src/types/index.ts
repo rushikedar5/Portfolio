@@ -4,5 +4,6 @@ export type Project = {
     description: string,
     tags: string[],
     githubUrl: string,
-    liveUrl?: string
+    liveUrl?: string,
+    image?: string
 }

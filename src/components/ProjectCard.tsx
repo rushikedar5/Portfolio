@@ -11,10 +11,13 @@ export default function ProjectCard({ project }: { project: Project }) {
       
       {/* Screenshot / Image Area */}
       <div className="relative w-full aspect-[1.6/1] bg-neutral-100 dark:bg-neutral-900 border border-neutral-200 dark:border-neutral-800 rounded-lg overflow-hidden mb-4">
-        {/* Placeholder for actual image: <Image src={project.image} alt={project.title} fill className="object-cover group-hover:scale-[1.02] transition-transform duration-500" /> */}
-        <div className="w-full h-full flex items-center justify-center font-mono text-xs text-neutral-400 group-hover:scale-[1.02] transition-transform duration-500 bg-neutral-800 text-white">
-          SCREENSHOT: {project.title}
-        </div>
+        {project.image ? (
+          <img src={project.image} alt={project.title} className="w-full h-full object-cover group-hover:scale-[1.02] transition-transform duration-500" />
+        ) : (
+          <div className="w-full h-full flex items-center justify-center font-mono text-xs text-neutral-400 group-hover:scale-[1.02] transition-transform duration-500 bg-neutral-800 text-white">
+            SCREENSHOT: {project.title}
+          </div>
+        )}
         
         {/* Status Badges */}
         <div className="absolute top-3 left-3 flex gap-2">

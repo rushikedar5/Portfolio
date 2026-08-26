@@ -4,7 +4,8 @@
     "title": "TradeStack",
     "description": "Production-grade real-time trading platform with low-latency order execution engine (market/limit orders), WebSocket-based live market data, JWT authentication, and personalized watchlists.",
     "tags": ["TypeScript", "Node.js", "Express.js", "PostgreSQL", "Redis", "BullMQ", "WebSocket", "JWT"],
-    "githubUrl": "https://github.com/rushikedar5/TradeStack"
+    "githubUrl": "https://github.com/rushikedar5/TradeStack",
+    "image": "/tradestack.png"
   },
   {
     "id": "2",
@@ -12,13 +13,15 @@
     "description": "Production-grade AI-powered SaaS job application tracker. Integrates Groq AI (LLaMA 3.3-70B) for structured ATS evaluations and Razorpay for secure subscription-based role management.",
     "tags": ["Next.js", "TypeScript", "Node.js", "Express.js", "PostgreSQL", "Prisma", "Groq AI", "Razorpay", "Cloudinary"],
     "githubUrl": "https://github.com/rushikedar5/HireVault",
-    "liveUrl": "https://hirevault.vercel.app"
+    "liveUrl": "https://hirevault.vercel.app",
+    "image": "/hirevault.png"
   },
   {
     "id": "3",
     "title": "Smart Hospital Queue & OPD Management",
     "description": "Production-ready hospital management system with real-time OPD queue tracking, appointment scheduling, and patient records. Scalable backend with 9 normalized entities and global exception handling.",
     "tags": ["Java", "Spring Boot", "Spring Security", "JPA", "MySQL", "JWT", "Next.js", "TypeScript", "Tailwind CSS"],
-    "githubUrl": "https://github.com/rushikedar5/Smart-Hospital-Management"
+    "githubUrl": "https://github.com/rushikedar5/Smart-Hospital-Management",
+    "image": "/hms.png"
   }
 ]
