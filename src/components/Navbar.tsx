@@ -1,11 +1,11 @@
 "use client";
 
-import React from "react";
+import React, { useState } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useTheme } from "next-themes";
 import { cn } from "@/lib/utils";
-import { Search, Moon, Sun, Code2 } from "lucide-react";
+import { Search, Moon, Sun, Menu, X } from "lucide-react";
 
 const links = [
   { href: "/", label: "Home" },
@@ -18,6 +18,7 @@ export default function NavBar() {
   const pathname = usePathname();
   const { theme, setTheme } = useTheme();
   const [mounted, setMounted] = React.useState(false);
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
   React.useEffect(() => {
     setMounted(true);
@@ -38,6 +39,7 @@ export default function NavBar() {
             <Link 
               href="/" 
               className="font-serif text-[22px] text-neutral-800 dark:text-neutral-200"
+              onClick={() => setIsMobileMenuOpen(false)}
             >
               Hrushikesh
             </Link>
@@ -69,10 +71,13 @@ export default function NavBar() {
               })}
             </ul>
 
-            {/* Utility Buttons */}
+            {/* Utility Buttons & Mobile Menu Toggle */}
             <div className="flex items-center gap-3 ml-2">
               <button 
-                onClick={() => document.dispatchEvent(new CustomEvent("open-command-menu"))}
+                onClick={() => {
+                  setIsMobileMenuOpen(false);
+                  document.dispatchEvent(new CustomEvent("open-command-menu"));
+                }}
                 className="flex items-center justify-center w-[34px] h-[34px] rounded-full border border-neutral-200 dark:border-neutral-800 text-neutral-600 hover:text-neutral-900 dark:hover:text-neutral-100 transition-colors bg-white dark:bg-neutral-900 shadow-sm"
               >
                 <Search size={14} strokeWidth={1.5} />
@@ -91,6 +96,18 @@ export default function NavBar() {
                   <Moon size={14} strokeWidth={1.5} />
                 )}
               </button>
+              
+              {/* Mobile Menu Button */}
+              <button
+                className="md:hidden flex items-center justify-center w-[34px] h-[34px] rounded-full border border-neutral-200 dark:border-neutral-800 text-neutral-600 hover:text-neutral-900 dark:hover:text-neutral-100 transition-colors bg-white dark:bg-neutral-900 shadow-sm"
+                onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+              >
+                {isMobileMenuOpen ? (
+                  <X size={14} strokeWidth={1.5} />
+                ) : (
+                  <Menu size={14} strokeWidth={1.5} />
+                )}
+              </button>
             </div>
           </div>
 
@@ -100,6 +117,30 @@ export default function NavBar() {
         <div className="hidden lg:block w-[240px]" />
 
       </div>
+
+      {/* Mobile Menu Overlay */}
+      {isMobileMenuOpen && (
+        <div className="md:hidden absolute top-16 left-0 w-full bg-[#fafafa] dark:bg-neutral-950 border-b border-neutral-200 dark:border-neutral-800 shadow-lg px-8 py-6 flex flex-col gap-4">
+          {links.map((link) => {
+            const isActive = pathname === link.href;
+            return (
+              <Link
+                key={link.href}
+                href={link.href}
+                onClick={() => setIsMobileMenuOpen(false)}
+                className={cn(
+                  "text-[15px] font-sans transition-colors",
+                  isActive
+                    ? "text-neutral-900 dark:text-neutral-100 font-bold"
+                    : "text-neutral-600 hover:text-neutral-900 dark:hover:text-neutral-300"
+                )}
+              >
+                {link.label}
+              </Link>
+            );
+          })}
+        </div>
+      )}
     </header>
   );
 }
